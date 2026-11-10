@@ -67,18 +67,18 @@ export default function GameScreen({
 
   useEffect(() => {
     if (won) return;
-    const timer = setTimeout(() => {
-      saveProgress(puzzle.id, cells, elapsed);
-    }, 400);
-    return () => clearTimeout(timer);
+    saveProgress(puzzle.id, cells, elapsed);
   }, [cells, elapsed, won, puzzle.id]);
 
   useEffect(() => {
-    return () => {
+    const flush = () => {
       const state = latest.current;
-      if (!state.won) {
-        saveProgress(puzzle.id, state.cells, state.elapsed);
-      }
+      if (!state.won) saveProgress(puzzle.id, state.cells, state.elapsed);
+    };
+    window.addEventListener('pagehide', flush);
+    return () => {
+      window.removeEventListener('pagehide', flush);
+      flush();
     };
   }, [puzzle.id]);
 

@@ -93,7 +93,8 @@ export default function LevelSelect({
       </main>
 
       <footer className="level-footer">
-        진행 상황은 이 기기에 자동 저장됩니다.
+        <span>진행 상황은 이 기기에 자동 저장됩니다.</span>
+        <span className="build-id">빌드 {__BUILD_ID__}</span>
       </footer>
     </div>
   );

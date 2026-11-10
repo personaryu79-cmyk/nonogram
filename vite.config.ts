@@ -3,10 +3,14 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 const base = process.env.VITE_BASE ?? '/';
+const buildId = (process.env.VITE_BUILD_ID ?? 'dev').slice(0, 7);
 
 // https://vite.dev/config/
 export default defineConfig({
   base,
+  define: {
+    __BUILD_ID__: JSON.stringify(buildId),
+  },
   preview: {
     allowedHosts: ['.trycloudflare.com'],
   },
@@ -14,7 +18,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'auto',
+      injectRegister: null,
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: '네모네모로직',
