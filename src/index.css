@@ -231,19 +231,23 @@ p {
 .level-footer {
   margin-top: auto;
   padding-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
   text-align: center;
   font-size: 12px;
   color: var(--muted);
 }
 
 .build-id {
-  font-size: 10px;
-  letter-spacing: 0.06em;
+  margin-left: auto;
+  align-self: flex-start;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
-  opacity: 0.7;
 }
 
 /* ---------- Game ---------- */

@@ -40,6 +40,7 @@ export default function LevelSelect({
             <h1>네모네모로직</h1>
             <p>숫자 단서만 보고 그림을 완성하세요</p>
           </div>
+          <span className="build-id">빌드 {__BUILD_ID__}</span>
         </div>
 
         <div className="progress-summary">
@@ -93,8 +94,7 @@ export default function LevelSelect({
       </main>
 
       <footer className="level-footer">
-        <span>진행 상황은 이 기기에 자동 저장됩니다.</span>
-        <span className="build-id">빌드 {__BUILD_ID__}</span>
+        진행 상황은 이 기기에 자동 저장됩니다.
       </footer>
     </div>
   );
