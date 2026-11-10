@@ -64,6 +64,48 @@ export function isSolved(cells: CellState[], puzzle: Puzzle): boolean {
   return true;
 }
 
+export function findHint(cells: CellState[], puzzle: Puzzle): number {
+  const { size, solution } = puzzle;
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const index = y * size + x;
+      if (solution[y][x] === '#' && cells[index] !== FILLED) return index;
+    }
+  }
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const index = y * size + x;
+      if (solution[y][x] !== '#' && cells[index] === FILLED) return index;
+    }
+  }
+  return -1;
+}
+
+export function applyHint(
+  cells: CellState[],
+  puzzle: Puzzle,
+): { cells: CellState[]; index: number } | null {
+  const index = findHint(cells, puzzle);
+  if (index < 0) return null;
+  const { size, solution } = puzzle;
+  const y = Math.floor(index / size);
+  const x = index % size;
+  const next = cells.slice();
+  next[index] = solution[y][x] === '#' ? FILLED : MARKED;
+  return { cells: next, index };
+}
+
+export function solveCells(puzzle: Puzzle): CellState[] {
+  const { size, solution } = puzzle;
+  const cells = new Array<CellState>(size * size);
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      cells[y * size + x] = solution[y][x] === '#' ? FILLED : MARKED;
+    }
+  }
+  return cells;
+}
+
 export function sameCells(a: CellState[], b: CellState[]): boolean {
   if (a.length !== b.length) return false;
   for (let i = 0; i < a.length; i++) {

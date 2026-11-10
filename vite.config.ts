@@ -19,7 +19,7 @@ export default defineConfig({
       manifest: {
         name: '네모네모로직',
         short_name: '네모로직',
-        description: '5×5, 10×10, 15×15 네모네모로직 퍼즐',
+        description: '5×5, 10×10, 15×15, 20×20 네모네모로직 퍼즐',
         lang: 'ko',
         start_url: '.',
         scope: '.',

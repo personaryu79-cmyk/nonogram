@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, '../src/data/puzzles.ts');
 
-const COUNTS = { 5: 6, 10: 6, 15: 6 };
+const COUNTS = { 5: 6, 10: 6, 15: 6, 20: 6 };
 const MAX_ATTEMPTS = 200000;
 
 function cluesOfLine(line) {
